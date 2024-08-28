@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-deploy
+  labels:
+    app: argocd-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: argocd-deploy
+  template:
+    metadata:
+      labels:
+        app: argocd-deploy
+    spec:
+      containers:
+      - name: argocd-deploy
+        image: tanmoy/myapp:latest
+        ports:
+        - containerPort: 8080
+
